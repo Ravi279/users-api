@@ -1,6 +1,6 @@
 # README
 
-* Follow the below setup instructions to successfully run the application.
+### Follow the below setup instructions to successfully run the application.
 
 * Ruby version
 	* The application is developed using Ruby 2.4 and Rails 5.1
