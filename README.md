@@ -1,14 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+* Follow the below setup instructions to successfully run the application.
 
 * Ruby version
 	* The application is developed using Ruby 2.4 and Rails 5.1
-
-* Follow the below setup instructions to successfully run the application.
 
 * Application Gem Setup
 	* Run below command to install all the gems
