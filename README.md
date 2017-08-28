@@ -35,3 +35,39 @@
 	```
 	rspec spec
 	```
+
+### Below are sample request's for the user service api's.
+
+
+* Sample GET URL's to fetch list of users
+	* With query parameter
+	```
+	http://localhost:3000/api/v1/users?query=age%2032
+	http://localhost:3000/api/v1/users?query=educated
+	```
+	* Without query parameter
+	```
+	http://localhost:3000/api/v1/users
+	```
+
+
+* Sample POST request for creating a user
+	* Reuest URL
+	http://localhost:3000/api/v1/users
+	* Request Headers
+	```
+	Content-Type: application/json
+	```
+
+	* Request Body
+	```
+	{
+		"user":	{
+			"email": "user30@example.com",
+			"phone_number": "5551235530",
+			"full_name": "John Snow",
+			"password": "mypassword38",
+			"metadata": "male, age 30, unemployed, college"
+		}
+	}
+	```
