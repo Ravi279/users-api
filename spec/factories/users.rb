@@ -1,12 +1,9 @@
 FactoryGirl.define do
   factory :user do
-    id "MyString"
-    email "MyString"
-    phone_number "MyString"
-    full_name "MyString"
-    password "MyString"
-    key "MyString"
-    account_key "MyString"
-    metadata "MyString"
+    email "user@example.com"
+    phone_number "6776768686"
+    full_name "User Hello"
+    password_digest "password123"
+    metadata "male, age 32, unemployed, college-educated"
   end
 end

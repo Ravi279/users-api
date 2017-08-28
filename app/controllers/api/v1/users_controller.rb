@@ -9,7 +9,7 @@ class Api::V1::UsersController < ApplicationController
 			@users = User.all.order('created_at DESC')
 		end
 
-		respond_with @users
+		respond_with @users.as_json(only: [:email, :phone_number, :full_name, :key, :account_key, :metadata])
 	end
 
 	# POST /v1/users
@@ -17,9 +17,13 @@ class Api::V1::UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			respond_with @user, status: '201 Created', location: nil
+			respond_with @user.as_json(only: [:email, :phone_number, :full_name, :key, :account_key, :metadata]),
+									 status: '201 Created', location: nil
 		else
-			respond_with @user.errors, status: '422 Unprocessable Entity'
+			respond_to do |format|
+				format.json { render :json => { "errors" => @user.errors },
+														 :status => :unprocessable_entity }
+			end
 		end
 	end
 

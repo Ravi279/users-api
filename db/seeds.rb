@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'securerandom'
 
-10.times do |i|
+10.times do
 	User.create!(email: FFaker::Internet.email,
 				phone_number: FFaker::PhoneNumber.short_phone_number,
 				full_name: FFaker::NameMX.full_name,
