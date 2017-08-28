@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
 class User < ApplicationRecord
-	# before_validation :generate_user_key, on: :create
+	before_validation :generate_user_key, on: :create
 
 	has_secure_password
 	has_secure_token :key

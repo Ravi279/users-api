@@ -4,9 +4,9 @@ RSpec.describe "Users", type: :request do
   describe "Users API" do
     before do
       FactoryGirl.create(:user, :email => 'user1@example.com', :phone_number => '8765678976',
-                         :full_name => "User1 Hello", :password_digest => "passwrod1", :metadata => "male, age 32, unemployed, college-educated")
+                         :full_name => "User1 Hello", :password => "passwrod1", :metadata => "male, age 32, unemployed, college-educated")
       FactoryGirl.create(:user, :email => 'user2@example.com', :phone_number => '8765678986',
-                         :full_name => "User2 Hello", :password_digest => "passwrod2", :metadata => "male, age 32, unemployed, college-educated")
+                         :full_name => "User2 Hello", :password => "passwrod2", :metadata => "male, age 32, unemployed, college-educated")
     end
 
     it 'sends a list of users' do
@@ -41,9 +41,9 @@ RSpec.describe "Users", type: :request do
           "Content-Type" => "application/json"
       }
       user_params = { "user" => {"email" => 'user3@example.com', "phone_number" => '8764678976',
-                               "full_name" => "User3 Hello", "password_digest" => "passwrod3", "metadata" => "male, age 32, unemployed, college-educated" } }
+                               "full_name" => "User3 Hello", "password" => "passwrod3", "metadata" => "male, age 32, unemployed, college-educated" } }
       post "/api/v1/users.json", params: user_params
-      expect(JSON.parse(response.body).except!('key', 'account_key')).to eq(user_params["user"].except!("password_digest"))
+      expect(JSON.parse(response.body).except!('key', 'account_key')).to eq(user_params["user"].except!("password"))
     end
 
     it "creates a new user with validation errors" do
@@ -52,7 +52,7 @@ RSpec.describe "Users", type: :request do
           "Content-Type" => "application/json"
       }
       user_params = { "user" => {"email" => 'user1@example.com', "phone_number" => '8764678976',
-                                 "full_name" => "User3 Hello", "password_digest" => "passwrod3", "metadata" => "male, age 32, unemployed, college-educated" } }
+                                 "full_name" => "User3 Hello", "password" => "passwrod3", "metadata" => "male, age 32, unemployed, college-educated" } }
       post "/api/v1/users.json", params: user_params
       expect(JSON.parse(response.body)['errors']["email"]).to eq(["has already been taken"])
     end
